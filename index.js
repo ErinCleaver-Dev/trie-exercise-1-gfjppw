@@ -26,6 +26,9 @@ export default class Trie {
    * @return {Array} Array of strings that match for prefix
    */
   getAllWords(str = "") {}
+  autoComplete() {
+    
+  }
 }
 
 // tests
