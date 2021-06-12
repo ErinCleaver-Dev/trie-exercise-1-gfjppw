@@ -41,6 +41,7 @@ class Trie {
   getAllWords(str = "") {
     let wordList = [];
 
+
     // first checks to see if thier are values in this, and if not it will return an empty array
     if(this === undefined) {
       return [];
@@ -57,11 +58,36 @@ class Trie {
         wordList = wordList.concat(currentChild.getAllWords(str + letter));
       }
     }
+    return wordList;
+  }
 
+  /**
+   * finds and returs a word
+   * @param  {String} word Prefix to search for
+   * @return {Array} Array of strings that match for prefix
+  */
+
+  find(word) {
     
 
-    return wordList
-    
+    let letters = word.split("")
+    let findWord = this.children[letters[0]];;
+    for(let i = 0; i < letters.length; i++) {
+      if(letters[i] in this.children)
+      {
+        findWord = this.children[letters[i]];
+      }
+    }
+    return findWord;
+  }
+
+     /**
+   * Return wprds that match the auto complete 
+   * @param  {String} str Prefix to search for
+   * @return {Array} Array of strings that match for prefix
+   */
+
+  autoComplete(str = "") {
   }
 }
 
@@ -71,5 +97,5 @@ trie.insert("cow");
 trie.insert("cat");
 trie.insert("dog");
 trie.insert("dad");
-//console.log(JSON.stringify(trie))
+console.log(JSON.stringify(trie))
 console.log(JSON.stringify(trie.getAllWords()));
