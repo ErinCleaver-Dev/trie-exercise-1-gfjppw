@@ -66,8 +66,10 @@ class Trie {
    * @param  {String} word Prefix to search for
    * @return {Array} Array of strings that match for prefix
   */
-  find(str = "") {
-    let letters = str.split("")
+   find(word) {
+    
+
+    let letters = word.split("")
     let findWord = this.children[letters[0]];;
     for(let i = 0; i < letters.length; i++) {
       if(letters[i] in this.children)
@@ -75,7 +77,6 @@ class Trie {
         findWord = this.children[letters[i]];
       }
     }
-    console.log(findWord);
     return findWord;
   }
 
@@ -86,7 +87,7 @@ class Trie {
    */
 
   autoComplete(str = "") {
-    let letters = findWord(str);
+    let letters = this.find(str);
     this.children[letters[0]]
     
   }
