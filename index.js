@@ -77,7 +77,9 @@ class Trie {
    */
 
   autoComplete(str = "") {
-
+    let letters = str.split("");
+    this.children[letters[0]]
+    
   }
 }
 
@@ -89,3 +91,4 @@ trie.insert("dog");
 trie.insert("dad");
 console.log(JSON.stringify(trie))
 console.log(JSON.stringify(trie.getAllWords()));
+trie.autoComplete("ca");
