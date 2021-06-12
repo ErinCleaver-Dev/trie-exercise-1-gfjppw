@@ -68,7 +68,9 @@ class Trie {
   */
    find(word) {
     let findWord = this;
+    // get letters from word 
     for(const letter of word) {
+      // check if it exists 
       if(findWord.children[letter]) {
         findWord = findWord.children[letter];
         
