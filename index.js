@@ -75,6 +75,7 @@ class Trie {
         findWord = this.children[letters[i]];
       }
     }
+    console.log(findWord);
     return findWord;
   }
 
@@ -85,7 +86,7 @@ class Trie {
    */
 
   autoComplete(str = "") {
-    let letters = str.split("");
+    let letters = findWord(str);
     this.children[letters[0]]
     
   }
