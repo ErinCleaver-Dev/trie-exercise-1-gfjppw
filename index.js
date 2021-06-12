@@ -88,6 +88,7 @@ class Trie {
 
   autoComplete(str = "") {
     let letters = this.find(str);
+    console.log(letters)
     this.children[letters[0]]
     
   }
