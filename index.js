@@ -71,6 +71,7 @@ class Trie {
     for(const letter of word) {
       if(findWord.children[letter]) {
         findWord = findWord.children[letter];
+        
       }
     }
     return findWord;
@@ -84,8 +85,8 @@ class Trie {
 
   autoComplete(str = "") {
     let letters = this.find(str);
-    console.log(letters)
-    this.children[letters[0]]
+    console.log(JSON.stringify(letters))
+  
     
   }
 }
@@ -96,6 +97,9 @@ trie.insert("cow");
 trie.insert("cat");
 trie.insert("dog");
 trie.insert("dad");
+console.log("\n\n")
 console.log(JSON.stringify(trie))
+console.log("\n\n")
 console.log(JSON.stringify(trie.getAllWords()));
-trie.autoComplete("ca");
+console.log("\n\n")
+trie.autoComplete("c");
