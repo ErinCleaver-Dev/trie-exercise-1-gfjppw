@@ -66,17 +66,19 @@ class Trie {
    * @param  {String} word Prefix to search for
    * @return {Array} Array of strings that match for prefix
   */
-   find(word) {
-    let findWord = this;
+   find(str,suggestions = []) {
     // get letters from word 
-    for(const letter of word) {
-      // check if it exists 
-      if(findWord.children[letter]) {
-        findWord = findWord.children[letter];
-        
-      }
+    if(this.end){
+      return;
     }
-    return findWord;
+
+    this.getAllWords().forEach(word => {
+      if(word.includes(str)) {
+        suggestions.push(word);
+      }
+    })
+    
+    return suggestions;
   }
 
      /**
@@ -86,22 +88,20 @@ class Trie {
    */
 
   autoComplete(str = "") {
-    let letters = this.find(str);
-    console.log(JSON.stringify(letters))
-  
-    
+    let completed = this.find(str);
+    return completed;
   }
 }
-
 // tests
 const trie = new Trie();
 trie.insert("cow");
 trie.insert("cat");
 trie.insert("dog");
 trie.insert("dad");
-console.log("\n\n")
+/*console.log("\n\n")
 console.log(JSON.stringify(trie))
 console.log("\n\n")
 console.log(JSON.stringify(trie.getAllWords()));
 console.log("\n\n")
-trie.autoComplete("c");
+*/
+console.log(trie.autoComplete("cat"));
