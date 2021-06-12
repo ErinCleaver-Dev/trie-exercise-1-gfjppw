@@ -67,14 +67,10 @@ class Trie {
    * @return {Array} Array of strings that match for prefix
   */
    find(word) {
-    
-
-    let letters = word.split("")
-    let findWord = this.children[letters[0]];;
-    for(let i = 0; i < letters.length; i++) {
-      if(letters[i] in this.children)
-      {
-        findWord = this.children[letters[i]];
+    let findWord = this;
+    for(const letter of word) {
+      if(findWord.children[letter]) {
+        findWord = findWord.children[letter];
       }
     }
     return findWord;
